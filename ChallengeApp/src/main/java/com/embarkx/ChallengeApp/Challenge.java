@@ -1,5 +1,7 @@
 package com.embarkx.ChallengeApp;
 
+
+
 public class Challenge {
     private Long id;
     private String month;
