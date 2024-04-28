@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/challenges")
 public class ChallengeController {
     private ChallengeService challengeService;
 
@@ -17,12 +18,12 @@ public class ChallengeController {
 
     }
 
-    @GetMapping("/challenges")
+    @GetMapping
     public List<Challenge> getChallengeList() {
         return challengeService.getAllChallenges();
     }
 
-    @PostMapping("/challenges")
+    @PostMapping
     public ResponseEntity<String> addChallenge(@RequestBody Challenge challenge) {
         boolean isChallengeAdded = challengeService.addChallenge(challenge);
         if(isChallengeAdded)
@@ -31,7 +32,7 @@ public class ChallengeController {
             return new ResponseEntity<>("Challenge Not Added successfully",HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @GetMapping("/challenges/{month}")
+    @GetMapping("/{month}")
     public ResponseEntity<Challenge> getChallenge(
             @PathVariable String month) {
         Challenge challenge =  challengeService.getChallenge(month);
@@ -41,7 +42,7 @@ public class ChallengeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/challenges/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateChallenge(@PathVariable Long id,@RequestBody Challenge updatedChallenge){
         boolean isChallengeUpdated = challengeService.updateChallenge(id, updatedChallenge);
         if (isChallengeUpdated)
@@ -50,7 +51,7 @@ public class ChallengeController {
             return new ResponseEntity<>("Challenge not updated successfully",HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/challenges/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteChallenge(@PathVariable Long id){
         boolean isChallengeDeleted = challengeService.deleteChallenge(id);
         if (isChallengeDeleted)
