@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
+//@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 public class ChallengeAppApplication {
 
 	public static void main(String[] args) {
